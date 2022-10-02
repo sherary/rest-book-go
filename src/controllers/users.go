@@ -57,3 +57,19 @@ func GetUser(c *gin.Context) {
 
 	c.JSON(http.StatusOK, user)
 }
+
+func RemoveUser(id int) []models.User {
+	for i, user := range userDatabase {
+		if user.ID == id {
+			return append(userDatabase[:i], userDatabase[i+1:]...)
+		}
+	}
+	return userDatabase
+}
+
+func DeleteUser(c *gin.Context) {
+	id, _ := strconv.Atoi(c.Param("id"))
+	userDatabase = RemoveUser(id)
+
+	c.JSON(http.StatusOK, userDatabase)
+}

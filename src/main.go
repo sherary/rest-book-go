@@ -23,6 +23,7 @@ func main() {
 	router.GET("/users", controllers.GetUsers)
 	router.POST("/users/create", controllers.CreateUser)
 	router.GET("/users/:id", controllers.GetUser)
+	router.DELETE("/users/delete/:id", controllers.DeleteUser)
 
 	router.Run("localhost:3000")
 }
