@@ -56,3 +56,19 @@ func GetBook(c *gin.Context) {
 
 	c.JSON(http.StatusOK, book)
 }
+
+func RemoveBook(id int) []models.Book {
+	for i, book := range bookDatabase {
+		if book.ID == id {
+			return append(bookDatabase[:i], bookDatabase[i+1:]...)
+		}
+	}
+	return bookDatabase
+}
+
+func DeleteBook(c *gin.Context) {
+	id, _ := strconv.Atoi(c.Param("id"))
+	bookDatabase = RemoveBook(id)
+
+	c.JSON(http.StatusOK, bookDatabase)
+}
