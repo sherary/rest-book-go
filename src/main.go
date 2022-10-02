@@ -19,11 +19,15 @@ func main() {
 	router.POST("/books/create", controllers.CreateBook)
 	router.DELETE("/books/delete/:id", controllers.DeleteBook)
 
-	// User Routes
+	// User routes
 	router.GET("/users", controllers.GetUsers)
 	router.POST("/users/create", controllers.CreateUser)
 	router.GET("/users/:id", controllers.GetUser)
 	router.DELETE("/users/delete/:id", controllers.DeleteUser)
+
+	// Transaction routes
+	router.GET("/transactions", controllers.GetTransactions)
+	router.POST("/transactions/create", controllers.CreateTransaction)
 
 	router.Run("localhost:3000")
 }
