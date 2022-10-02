@@ -38,9 +38,14 @@ func main() {
 		c.JSON(http.StatusOK, gin.H{"data": "Bye World!"})
 	})
 
-	router.GET("/all", controllers.GetBooks)
+	//Book routes
+	router.GET("/books", controllers.GetBooks)
 	// router.GET("/book/:id", getBook)
-	router.POST("/create", controllers.CreateBook)
+	router.POST("/books/create", controllers.CreateBook)
+
+	// User Routes
+	router.GET("/users", controllers.GetUsers)
+	router.POST("/users/create", controllers.CreateUser)
 
 	router.Run("localhost:3000")
 }
